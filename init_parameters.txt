@@ -1,0 +1,135 @@
+#--------------------------User Interface------------------------------#
+
+# ** 1 ** take input from camera instead of video file # 0
+# ** 2 ** input dataset: 0:PETS2006 1:PETS2007 2:AVSS 3:Custom # 3
+# ** 3 ** set id of input video file (0-6 for PETS2006, 0-9 for PETS2007, 0-8 for AVSS and 0-18 for custom dataset) # 7
+
+# ** 4 ** view id of input video file (0-3) (only for PETS datasets)# 2 
+# ** 5 ** size id of input video file (0-2)# 1
+# ** 6 ** show all of the current blobs' bounding boxes (instead of showing only those in the tracking system) # 1
+
+# ** 7 ** enable frame processing at lower resolution than the input # 0
+# ** 8 ** factor by which the processing resolution is to be reduced # 2
+# ** 9 ** display output at a different resolution than the original # 0
+# ** 10 ** factor by which the processing resolution is multiplied to get the display resolution # 2
+
+#----------------------------Pre Processing--------------------------------#
+
+# ** 1 ** contrast enhancement method: 0:Disable contrast enhancement 1:Histogram equalization 2:Histogram normalization 3:Image normalization 4:Image filtering # 0
+# ** 2 ** noise reduction filter to be used: 0:Disable noise reduction 1:Gaussian 2:Median 3:Bilateral 4:Linear # 0
+
+# ** 3 ** show histograms of original and processed frames # 0
+
+# ** 4 ** width of kernel to be used for noise filtering # 5
+# ** 5 ** height of kernel to be used for noise filtering # 5
+# ** 6 ** use square kernel for filtering (where width=height) # 1
+
+# ** 7 ** cutoff percent for image normalization # 10
+
+#------------------------Background Subtraction----------------------------#
+
+# ** 1 ** background subtraction and modeling method: 0:Grimson GMM 1:Zivkovic GMM 2:Adaptive median 3:Running Gaussian Average # 1
+
+# ** 2 ** grimson gmm bgs:maximum standard deviation which is the square root of the maximum intensity difference for a pixel to be considered in the background # 3
+# ** 3 ** grimson gmm bgs: learning rate # 0.001
+# ** 4 ** grimson gmm bgs: maximum modes # 3
+
+# ** 5 ** zivkovic gmm bgs: maximum standard deviation which is the square root of the maximum intensity difference for a pixel to be considered in the background # 4
+# ** 6 ** zivkovic gmm bgs: learning rate # 0.001
+# ** 7 ** zivkovic gmm bgs: maximum modes # 3
+
+# ** 8 ** adaptive median bgs: maximum difference of pixel intensity between the current frame and the background image for it to be considered part of the background # 40
+# ** 9 ** adaptive median bgs: no. of frames skipped between consecutive frames that are processed # 30
+# ** 10 ** adaptive median bgs: no. of frames to be used for learning the background model # 7
+
+# ** 11 ** running gaussian bgs:maximum standard deviation which is the square root of the maximum intensity difference for a pixel to be considered in the background # 3
+# ** 12 ** running gaussian bgs: learning rate # 0.001
+# ** 13 ** running gaussian bgs: no. of frames to be used for learning the background model # 30
+
+# ** 14 ** maximum allowed ratio of foreground pixels before the background is reset # 0.60
+# ** 15 ** minimum number of consecutive frames the foreground ratio must be exceeded for before the background is reset # 120
+
+
+#--------------------------Foreground Processing-------------------------------#
+
+# ** 1 ** enable foreground processing # 1
+# ** 2 ** shadow detection method: 0:disable 1:simple NCC 2:complex NCC # 1
+# ** 3 ** enable shadow refinement # 1
+
+# ** 4 ** foreground similarity ratio threshold # 0.90
+# ** 5 ** minimum simple NCC for shadow candidate # 0.95
+# ** 6 ** minimum complex NCC for shadow candidate # 0.60
+# ** 7 ** minimum frame to background intensity ratio for shadow refinement # 0.50
+# ** 8 ** maximum standard deviation of intensity ratio # 0.05
+# ** 9 ** minimum frame intensity for shadow detection # 5
+
+# ** 10 ** enable morphological frame processing # 1
+# ** 11 ** enable morphological closing operation # 1
+# ** 12 ** enable morphological opening operation # 1
+# ** 13 ** number of iterations for erosion/dilation # 1
+
+#-----------------------------Blob Detection---------------------------------#
+
+# ** 1 ** minimum blob size in number of pixels when processing at original resolution. This is reduced by square of the resize factor if lower resolution processing is enabled  # 10
+
+#-----------------------------Blob Matching----------------------------------#
+
+# ** 1 ** minimum ratio of blob bounding box to be in foreground for it to be considered as occluded # 0.80
+# ** 2 ** maximum fractional difference in the areas of two blobs for them to match # 0.25
+# ** 3 ** maximum distance between two blobs as a fraction of the length of the blob bounding box diagonal for them to match  # 0.25
+# ** 4 ** minimum fractional match between the appearance of two matched blobs # 0.90
+# ** 5 ** learning rate (alpha) for exponential moving average calculation # 0.10
+# ** 6 ** method used for calculating distance between two blobs:  0:centroid distance 1:bounding box distance # 1
+# ** 7 ** method used for calculating the area of a blob:  0:area of blob contour 1:area of blob bounding box # 1
+
+# ** 8 ** type for area to use for matching of static blobs: 0:original area(when the blob was first added) 1:exponential moving average of matched blob areas 2:simple average of matched blob areas # 2
+# ** 9 ** use gradient images for finding blob difference # 1
+
+
+#-----------------------------Blob Tracking---------------------------------#
+
+# ** 1 ** minimum hit count for a blob to become a candidate abandoned/removed object # 480
+# ** 2 ** minimum hit count for a blob to be tested for occlusion if it is not detected # 24
+# ** 3 ** minimum hit count for a blob to be labeled static # 360
+# ** 4 ** maximum consecutive frames a blob is allowed to go undetected before it is removed it from the tracking system # 120
+# ** 5 ** maximum consecutive frames a blob is allowed to be occluded before removing it from the tracking system # 240
+# ** 6 ** maximum mean difference between intensity levels for a blob to be removed from the tracking system # 20
+
+# ** 7 ** number of frames for which to show removed objects before healing them into the background (0-1000)# 240
+# ** 8 ** number of frames for which to show abandoned objects before healing them into the background (0-1000)# 960
+ 
+# ** 9 ** factor by which maximum allowed consecutive occlusions are multiplied for static objects (1-50) # 2
+# ** 10 **factor by which maximum allowed consecutive misses are multiplied for static objects (1-50) # 1
+
+
+#---------------------------Abandonment Analysis-------------------------------#
+
+# ** 1 ** abandonment analysis method:  0:Disable  1:Gradient based edge detection  2:Canny edge detection  3:Region growing # 2
+# ** 2 ** similarity metric for region growing: 0:similarity with the existing region 1:absolute similarity with the nearest existing pixel 2:relative similarity with the nearest pixels inside and outside the region # 1
+# ** 3 ** width of erosion to be performed before region growing # 2
+
+# ** 4 ** minimum fractional difference between the edge pixel count of current and background frames for abandoned or removed blob (applicable for abandonment methods 1 and 2) # 0.20
+# ** 5 ** maximum fractional difference in intensity for pixel to be added to a region # 0.25
+# ** 6 ** minimum fractional difference between the region pixel counts in current and background frames for abandoned blob (applicable for abandonment method 3)# 0.20
+# ** 7 ** maximum squared Euclidean difference between two pixels for them to be in the same region (only applicable for abandonment method 3) # 25
+
+# ** 8 ** enable still person detection # 0
+# ** 9 ** minimum moving average of mean pixel intensity differences for a static blob to be a still person # 15
+
+# ** 10 ** low threshold for Canny edge detection # 100
+# ** 11 ** ratio of high to low threshold for Canny edge detection # 3
+
+# ** 12 ** minimum intensity for thresholding of gradient images # 50
+
+
+#-----------------------------Blob Filtering--------------------------------#
+
+# ** 1 ** enable blob filtering # 1
+# ** 2 ** maximum fractional difference in the areas of two objects for them to match # 1
+# ** 3 ** maximum distance between two objects as a fraction of their areas for them to match # 0.02
+# ** 4 ** maximum mean square difference between the pixel values of two objects for them to match # 1
+# ** 5 ** method used for calculating distance between two blobs:  0:centroid distance 1:bounding box distance # 0
+
+# ** 6 ** match blob location # 1
+# ** 7 ** match blob size # 1
+# ** 8 ** match blob appearance # 1

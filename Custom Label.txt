@@ -1,0 +1,21 @@
+0:	indoor	dark	mhrd
+1:	outdoor	day	admin
+2:	outdoor	day	lt
+3:	outdoor	day	cc2	no	event
+4:	outdoor	day	bh3
+5:	outdoor	day	bh4
+6:	outdoor	day	tennis
+7:	outdoor	day	bh	gate
+8:	outdoor	day	canteen
+9:	outdoor	day	main	gate
+10:	outdoor	night	cc2	parking	1
+11:	outdoor	night	cc2	paring	2
+12:	outdoor	night	cc2	crossing
+13:	indoor	day	mhrd	in
+14:	indoor	day	mhrd	in	lighting	change
+15:	indoor	dark	mhrd	in
+16:	indoor	day	mhrd	out
+17:	indoor	day	mhrd	in	lighting	change
+18:	outdoor	night	tennis	very	dark
+
+

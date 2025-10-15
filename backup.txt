@@ -1,0 +1,106 @@
+
+/*
+cvNamedWindow("in", CV_WINDOW_AUTOSIZE);
+cvNamedWindow("out", CV_WINDOW_AUTOSIZE);
+
+CvCapture *fc = cvCaptureFromCAM(0);
+
+IplImage* frame = cvQueryFrame(fc);
+
+if (!frame) {
+return 0;
+}
+
+IplImage* greyscale = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
+IplImage* output = cvCreateImage(cvGetSize(frame),IPL_DEPTH_32F , 1);
+
+while(1){
+
+frame= cvQueryFrame(fc);
+cvShowImage("in", frame);
+
+// manually convert to greyscale
+for (int y = 0; y < frame->height; y++) {
+uchar* p = (uchar*) frame->imageData + y* frame->widthStep; // pointer to row
+uchar* gp = (uchar*) greyscale->imageData + y*greyscale->widthStep;
+for(int x = 0; x < frame->width; x++){
+gp[x] = (p[3*x] + p[3*x+1] + p[3*x+2])/3;   // average RGB values
+}
+}
+
+cvShowImage("out", greyscale);
+
+char c = cvWaitKey(33);
+if (c == 27) {
+return 0;
+}
+}
+*/
+
+/*IplImage* getConnectedComponents(IplImage* src) {
+
+
+IplImage* dst = cvCreateImage( cvGetSize(src), 8, 3 );
+CvMemStorage* storage = cvCreateMemStorage(0);
+CvSeq* contour=0;
+
+cvThreshold( src, src, 1, 255, CV_THRESH_BINARY );
+cvFindContours( src, storage, &contour, sizeof(CvContour),CV_RETR_CCOMP, CV_CHAIN_APPROX_SIMPLE );
+cvZero( dst );
+for( ; contour != 0; contour = contour->h_next ) {
+CvScalar color = CV_RGB( rand()&255, rand()&255, rand()&255 );
+cvDrawContours( dst, contour, color, color, -1, CV_FILLED, 8 );    }
+return dst;
+}
+*/
+/*
+cout<<"\n Using C++ API.\n";
+
+cv::Mat frame;
+cv::Mat back;
+cv::Mat fore;
+cout << "About to create object.\n";
+
+cv::VideoCapture cap;
+
+cout << "After creating object.\n";
+
+if(capture_from_camera)
+cap.open(1);
+else
+cap.open(input_file_name);
+
+
+if(!cap.isOpened()) {
+cout << "Could not access input source.\n";
+return 0;// check if we succeeded
+}
+cout << "After opening file.\n";
+
+
+
+cv::BackgroundSubtractorMOG2 bg;
+//bg.nmixtures = 3;
+//bg.bShadowDetection = true;
+
+vector< vector<Point> > contours;
+
+cv::namedWindow("Frame",1);
+cv::namedWindow("Background",1);
+
+cout << "About to enter the loop.\n";
+
+while(true) {
+cap >> frame;
+cout << "After getting a frame.\n";
+cv::imshow("Frame",frame);
+bg.operator ()(frame,fore);
+bg.getBackgroundImage(back);
+cv::erode(fore,fore,cv::Mat());
+cv::dilate(fore,fore,cv::Mat());
+cv::findContours(fore,contours,CV_RETR_EXTERNAL,CV_CHAIN_APPROX_NONE);
+cv::drawContours(frame,contours,-1,cv::Scalar(0,0,255),2);            
+cv::imshow("Background",back);
+if(waitKey(1) >= 0) break;
+}
+*/

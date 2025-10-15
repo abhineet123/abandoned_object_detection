@@ -1,0 +1,3 @@
+blob 0 ->	 a=   3638	 p= 1219.98 (    0.00 extern)	 pconvex=  406.46	 ext=0	 m=  32.56	 c=603.97	 l=    0.00
+blob 1 ->	 a=   1287	 p=  569.25 (    0.00 extern)	 pconvex=  171.26	 ext=0	 m=  20.04	 c=280.03	 l=    0.00
+blob 2 ->	 a=    665	 p=  291.71 (    0.00 extern)	 pconvex=  124.26	 ext=0	 m=  10.18	 c=141.14	 l=    0.00

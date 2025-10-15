@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1362892845 source:e:\pets2006\abandoned_object_detection\abandoned_object_detection\image.cpp
+	"Image.hpp"
+
+1362892875 e:\pets2006\abandoned_object_detection\abandoned_object_detection\image.hpp
+	<cv.h>
+	<cxcore.h>
+
+1363189223 source:e:\pets2006\abandoned_object_detection\abandoned_object_detection\blobdetection.cpp
+	"blobDetection.hpp"
+
+1363117709 e:\pets2006\abandoned_object_detection\abandoned_object_detection\blobdetection.hpp
+	<cv.h>
+	<highgui.h>
+	"BlobResult.h"
+
+1363184385 source:e:\pets2006\abandoned_object_detection\abandoned_object_detection\main.cpp
+	<iostream>
+	<cv.h>
+	<cxcore.h>
+	<highgui.h>
+	<core\core.hpp>
+	"GrimsonGMM.hpp"
+	"blobDetection.hpp"
+
+1362683693 e:\pets2006\abandoned_object_detection\abandoned_object_detection\grimsongmm.hpp
+	"Bgs.hpp"
+
+1212055410 e:\pets2006\abandoned_object_detection\abandoned_object_detection\bgs.hpp
+	"Image.hpp"
+	"BgsParams.hpp"
+
+1212055410 e:\pets2006\abandoned_object_detection\abandoned_object_detection\bgsparams.hpp
+
+1362683756 source:e:\pets2006\abandoned_object_detection\abandoned_object_detection\grimsongmm.cpp
+	"GrimsonGMM.hpp"
+
